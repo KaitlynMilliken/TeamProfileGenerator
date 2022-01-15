@@ -1,0 +1,27 @@
+{
+  "dependencies": {
+    "inquirer": "^8.2.0",
+    "jest": "^27.4.7"
+  },
+  "name": "teamprofilegenerator",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KaitlynMilliken/TeamProfileGenerator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KaitlynMilliken/TeamProfileGenerator/issues"
+  },
+  "homepage": "https://github.com/KaitlynMilliken/TeamProfileGenerator#readme"
+}
