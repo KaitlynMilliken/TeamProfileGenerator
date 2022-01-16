@@ -10,10 +10,31 @@ test('test for creation of employee', () => {
 });
 
 
-//test for getName
+test('test method getName()', () => {
+    let employee = new Employee('Jack', 123, 'spam@spam.com');
 
-//test for getID
+    expect(typeof employee.name).toBe("string");
+    expect(employee.getName()).toBe(employee.name);
+});
 
-//test for getEmail
 
-//test for getRole
+test('test method getId()', () => {
+    let employee = new Employee('Jack', 123, 'spam@spam.com');
+
+    expect(typeof employee.employeeId).toBe("number");
+    expect(employee.getID()).toBe(employee.employeeId);
+    expect(employee.getID()).toBeGreaterThan(1);
+});
+
+test('test method getName()', () => {
+    let employee = new Employee('Jack', 123, 'spam@spam.com');
+
+    expect(typeof employee.email).toBe("string");
+    expect(employee.getEmail()).toBe(employee.email);
+});
+
+test('test method getRole()', () => {
+    let employee = new Employee('Jack', 123, 'spam@spam.com');
+
+    expect(employee.getRole()).toBe("Employee");
+});

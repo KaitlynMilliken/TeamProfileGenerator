@@ -1,7 +1,9 @@
 const inquirer = require("inquirer");
 const fs = require('fs');
 const Employee = require('./lib/Employee');
-
+const Manager = require('./lib/Manager');
+const Intern = require('./lib/Intern');
+const Engineer = require('./lib/Engineer');
 const team = [];
 
 const managerQuestions = [
@@ -62,33 +64,39 @@ const employeeQuestions = [{
 ];
 
 const buildTeam = function(){
-    fs.writeFile('./dist/index/html');
+    console.log(team);
 };
 
 const addEmployee = function () {
     inquirer.prompt(employeeQuestions).then((data) => {
-        //team.push(data)
-        if(data.addEmployee){
-            addEmployee();
+        if(data.role == "Intern"){
+            let {role, employeeID, name, email, school} = data;
+            let intern = new Intern(employeeID, name, email, school);
+            team.push(intern);
+
+            if(data.addEmployee) addEmployee();
+            else buildTeam();
         }
-        else{
-           // buildTeam();
+        else if(data.role == "Engineer"){
+            let {role, employeeID, name, email, github} = data;
+            let engineer = new Engineer(employeeID, name, email, github);
+            team.push(engineer);
+
+            if(data.addEmployee) addEmployee();
+            else buildTeam();
         }
     });
 }
 
 
 inquirer.prompt(managerQuestions).then((data) => {
-    let manager = new Employee(data);
+    let {name, employeeID, email, officeNumber} = data;
+    let manager = new Manager(name, employeeID, email, officeNumber);
 
-    console.log(manager);
+    team.push(manager);
 
-    if(data.addEmployee){
-        addEmployee();
-    }
-    else{
-        //buildTeam();
-    }
+    if(data.addEmployee) addEmployee();
+    else buildTeam();
 }).catch((err) => {
     console.log(err);
 });
